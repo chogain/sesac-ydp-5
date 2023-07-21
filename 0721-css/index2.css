@@ -1,0 +1,28 @@
+/* *: 전ㅊ체 선택자 */
+* {
+  color: navy;
+}
+
+/* 태그명: 태그 선택자 */
+h1 {
+  background-color: pink;
+}
+
+/* .클래스명: 클래스 선택자 */
+.second {
+  background-color: aquamarine;
+}
+
+/* #아이디명: 아이디 선택자 */
+#first {
+  background-color: antiquewhite;
+}
+
+/* 예시 2 */
+.small {
+  font-size: 10px;
+}
+
+.big {
+  font-size: 20px;
+}
