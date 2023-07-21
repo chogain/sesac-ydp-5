@@ -1,0 +1,92 @@
+.div1 {
+  width: 100px;
+  height: 100px;
+  background-color: aquamarine;
+}
+
+/* :hover : 요소에 마우스를 올렸을 때 */
+.div1:hover {
+  background-color: hotpink;
+  height: 150px;
+}
+
+/* :active: 요소를 마우스로 클릭하고 있을 때 */
+/* hover 속성과 active 속성이 모두 적용되는 이유는 active가 실행될 떄 해당 요소에 hover되고 있기 때문 */
+.div1:active {
+  background-color: brown;
+  width: 150px;
+}
+
+/* :focus: 요소에 포커스가 됐을 때 */
+input:focus {
+  background-color: blueviolet;
+  color: white;
+  outline-color: yellowgreen;
+}
+
+.links > a:hover {
+  background-color: coral;
+}
+
+.links > a:visited {
+  /* color: #cccccc; */
+  color: #ccc;
+}
+
+/* 요소 상황에 따른 가상 선택자 */
+.zoo > * {
+  background-color: green;
+  color: white;
+}
+
+/* E:last-child: E가 마지막 요소 선택 */
+.zoo > li:last-child {
+  background-color: black;
+}
+
+/* E:first-child: E가 첫 요소 선택 */
+.zoo > *:first-child {
+  background-color: red;
+}
+
+/* E:not(XYZ): XYZ가 아닌 요소 선택 */
+.zoo > *:not(div) {
+  background-color: pink;
+}
+
+/* E:nth-child(n): E가 n번째 요소 선택 */
+.zoo > *:nth-child(2) {
+  background-color: aqua;
+}
+
+/* 가상 요소 선택자 */
+/*
+  의미 없는 HTML 태그를 만들지 않고 요소 삽입이 가능 (Hot, 추천 등)
+  반드시 content 속성 사용 빈값''이라도 넣어야 적용
+ */
+/* ::before: 선택된 요소 앞에 Content를 삽입하는 선택자 */
+.box::before {
+  content: '택시~ ';
+  font-weight: bold;
+  color: red;
+}
+
+/* ::after: 선택된 요소 뒤에 Content를 삽입하는 선택자 */
+.box::after {
+  content: ' 빨리!!';
+  font-weight: bold;
+  color: blue;
+}
+
+/* 속성 선택자 */
+[disabled] {
+  background-color: red;
+}
+
+[placeholder='이름'] {
+  background-color: orange;
+}
+
+input:not([placeholder]) {
+  background-color: blue;
+}
