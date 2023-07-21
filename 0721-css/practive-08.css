@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body * {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+}
+
+body a {
+  margin: 0 10px;
+}
+
+body > header {
+  background-color: gainsboro;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 40px;
+}
+
+.header2 > nav {
+  width: 100%;
+}

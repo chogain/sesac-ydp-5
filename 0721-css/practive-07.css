@@ -1,0 +1,27 @@
+section {
+  height: 250px;
+  background-color: gainsboro;
+  position: absolute;
+  padding: 0 50px;
+}
+
+img {
+  height: 100px;
+  width: 150px;
+  position: relative;
+  transform: skewY(20deg);
+}
+
+img:first-child {
+  top: 100px;
+}
+
+img:nth-child(2) {
+  top: 80px;
+  left: -50px;
+}
+
+img:last-child {
+  top: 50px;
+  left: -100px;
+}

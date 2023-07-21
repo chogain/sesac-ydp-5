@@ -1,0 +1,36 @@
+/* .stripes > div:first-child {
+  color: white;
+  background-color: navy;
+} */
+.stripes > div:nth-child(2n-1) {
+  color: white;
+  background-color: navy;
+}
+/* .stripes > div:nth-child(5) {
+  color: white;
+  background-color: navy;
+}
+.stripes > div:nth-child(7) {
+  color: white;
+  background-color: navy;
+}
+.stripes > div:nth-child(9) {
+  color: white;
+  background-color: navy;
+} */
+
+.stripes > div:nth-child(2n) {
+  background-color: yellow;
+}
+/* .stripes > div:nth-child(4) {
+  background-color: yellow;
+}
+.stripes > div:nth-child(6) {
+  background-color: yellow;
+}
+.stripes > div:nth-child(8) {
+  background-color: yellow;
+}
+.stripes > div:last-child {
+  background-color: yellow;
+} */
