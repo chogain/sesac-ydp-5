@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript</title>
+
+    <script>
+      alert('head 내부');
+      // console.log('head 내부');
+    </script>
+    <script src="./index.js"></script>
+  </head>
+  <script>
+    alert('head와 body 사이');
+  </script>
+  <style>
+    body {
+      background-color: pink;
+    }
+  </style>
+  <body>
+    <script>
+      alert('body 내부');
+    </script>
+  </body>
+  <script>
+    alert('body 외부');
+  </script>
+</html>
