@@ -1,0 +1,59 @@
+.d-inline1 {
+  display: inline;
+  background-color: skyblue;
+}
+
+.d-inline2 {
+  display: inline;
+  background-color: pink;
+}
+
+/* block 요소는 width를 얼마나 설정하든지 무조건 개행 처리 */
+
+.d-block1 {
+  display: block;
+  background-color: skyblue;
+  width: 500px;
+}
+
+.d-block2 {
+  display: block;
+  background-color: pink;
+  width: 400px;
+}
+
+.d-inline-block1 {
+  display: inline-block;
+  background-color: skyblue;
+}
+
+.d-inline-block2 {
+  display: inline-block;
+  background-color: pink;
+  width: 100px;
+  height: 300px;
+  margin: 20px;
+  /* CSS margin 단축 프로퍼티 */
+  /* 
+  margin-top: 20px;
+  margin-right: 40px;
+  margin-bottom: 20px;
+  margin-left: 40px;
+  */
+  /* margin: 20px 40px 20px 40px; */
+  /* margin: 20px 40px; */
+}
+
+.d-none {
+  display: none;
+  background-color: yellowgreen;
+  width: 100px;
+  height: 100px;
+}
+
+.box {
+  visibility: hidden;
+  background-color: violet;
+  width: 100px;
+  height: 100px;
+}
