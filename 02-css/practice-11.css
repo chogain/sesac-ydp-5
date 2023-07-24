@@ -1,0 +1,14 @@
+.text {
+  /* animation: text-moving 5s infinite ease-in; */
+}
+
+@keyframes text-moving {
+  from {
+    margin-left: 100%;
+    width: 200%;
+  }
+  to {
+    margin-left: 0;
+    width: 100%;
+  }
+}

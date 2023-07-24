@@ -1,0 +1,32 @@
+.circle {
+  width: 100px;
+  height: 100px;
+  background-color: pink;
+  border-radius: 50%;
+
+  position: absolute;
+  animation: movingBall 5s infinite linear;
+}
+
+@keyframes movingBall {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  25% {
+    top: 0;
+    left: 50%;
+  }
+  50% {
+    top: 50%;
+    left: 50%;
+  }
+  75% {
+    top: 50%;
+    left: 0;
+  }
+  100% {
+    left: 0;
+    top: 0;
+  }
+}
