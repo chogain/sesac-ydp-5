@@ -88,3 +88,86 @@ console.log(arr2.join('-'));
 console.log('hello'.split(''));
 console.log('hello'.split('').reverse());
 console.log('hello'.split('').reverse().join(''));
+
+////////////////////////////////////////
+// 배열에서 반복문
+// - 기본 for문
+// - for of문
+// - forEach() 메서드
+
+const arr3 = [1, 2, 5, 6, 7];
+const alphabets = ['a', 'b', 'c', 'd'];
+
+// 기본 for문 사용
+// 매번 인덱싱 해주어야 함
+for (let a = 0; a < arr3.length; a++) {
+  console.log(arr3[a]);
+}
+
+// for of문 사용
+for (let alpha of alphabets) {
+  console.log(alpha);
+}
+
+// forEach() 메서드 사용
+alphabets.forEach(function (alpha, idx, arr) {
+  // alpha : currentValue를 의미. 반복하고 있는 현재 요소
+  // idx : currentValue의 인덱스(위치)
+  // arr : forEach로 호출한 배열
+  console.log(alpha, idx, arr);
+});
+
+// 배열의 함을 세 가지 방법으로 작성
+const numbers = [1, 2, 3, 4, 5, 6];
+let sum1 = 0;
+let sum2 = 0;
+let sum3 = 0;
+
+for (let i = 0; i < numbers.length; i++) {
+  sum1 += numbers[i];
+}
+
+for (let number of numbers) {
+  sum2 += number;
+}
+
+numbers.forEach((number) => {
+  sum3 += number;
+});
+
+// map, filter, find 메서드
+const arr4 = [1, 2, 3, 4, 5];
+
+// map() : 배열 내 모든 원소에 대해 연산한 결과를 모아 "새로운 배열" 반환
+const mapResult = arr4.map(function (e) {
+  return e * 2;
+});
+const mapResult2 = arr4.map((e) => e * 2);
+
+// filter() : 주어진 함수의 조건을 통과하는 요소를 모아
+// 조건을 통과하면 요소 유지, 미통과하면 요소를 버려 "새로운 배열" 반환
+const filterResult = arr4.filter(function (e) {
+  return e > 2;
+});
+const filterResult2 = arr4.filter((e) => e > 2);
+
+// find() : 특정 조건을 만족하는 첫 번째 요소 반환
+const findResult = arr4.find(function (e) {
+  return e > 2;
+}); // 3 반환
+const findResult2 = arr4.find((e) => e > 2); // 3 반환
+
+// 퀴즈
+const words = ['dog', 'cat', 'rabbit', 'apple', 'wow'];
+
+// 1. 글자 수가 3개 초과인 단어만 필터링
+const overThree = words.filter((word) => word.length > 3);
+console.log(overThree);
+
+// 2. 글자에 'a' 문자가 포함되어 있는 단어만 필터링
+const includeA = words.filter((alphabet) => alphabet.includes('a'));
+console.log(includeA); // ['cat', 'rabbit', 'apple'] 출력
+
+// includes를 실행한 결과를 새로운 배열로 만들었기 때문에 [false, true, true, true, false]와 같이 결과가 나옴
+const includeA2 = words.map((word) => word.includes('a'));
+console.log(includeA2); // [false, true, true, true, false]
