@@ -1,0 +1,19 @@
+.box {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: aliceblue;
+}
+
+.myCenter {
+  background-color: antiquewhite;
+  width: 300px;
+}
+
+.myWidth {
+  background-color: gold;
+}
+
+.myHeight {
+  background-color: lightblue;
+}
