@@ -1,0 +1,29 @@
+@media (min-width: 500px) {
+  body {
+    background-color: skyblue;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 500px) {
+  body {
+    background-color: none;
+  }
+}
+
+@media (max-width: 300px) {
+  body {
+    background-color: orange;
+  }
+}
+
+@media (max-heigh: 300px) {
+  p {
+    font-family: 'Courier New', Courier, monospace;
+  }
+}
+
+@media (min-height: 300px) {
+  p {
+    background-color: green;
+  }
+}
