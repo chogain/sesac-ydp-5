@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습19. 클래스 바꾸기</title>
+
+    <!-- TODO: jQuery CDN 추가 -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      h2 {
+        color: green;
+        text-align: center;
+      }
+
+      table {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+      }
+
+      tr:not(.day) > td {
+        width: 100px;
+        height: 150px;
+      }
+
+      tr:not(.day) > td > div {
+        margin-top: 5px;
+        background-color: pink;
+      }
+
+      .sun {
+        color: red;
+      }
+
+      .sat {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <label for="date">날짜 : </label>
+      <input type="text" id="date" />
+      <br />
+      <label for="content">내용 : </label>
+      <input type="text" id="content" />
+      <br />
+      <button>작성</button>
+    </form>
+
+    <h2>2023년 8월</h2>
+    <table>
+      <tr class="day">
+        <td class="sun">일</td>
+        <td>월</td>
+        <td>화</td>
+        <td>수</td>
+        <td>목</td>
+        <td>금</td>
+        <td class="sat">토</td>
+      </tr>
+      <tr>
+        <td class="sun"></td>
+        <td></td>
+        <td>
+          1
+          <div>sdfk</div>
+          <div>sdfk</div>
+        </td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td class="sat">5</td>
+      </tr>
+      <tr>
+        <td class="sun">6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td class="sat">12</td>
+      </tr>
+      <tr>
+        <td class="sun">13</td>
+        <td>14</td>
+        <td>15</td>
+        <td>16</td>
+        <td>17</td>
+        <td>18</td>
+        <td class="sat">19</td>
+      </tr>
+      <tr>
+        <td class="sun">20</td>
+        <td>21</td>
+        <td>22</td>
+        <td>23</td>
+        <td>24</td>
+        <td>25</td>
+        <td class="sat">26</td>
+      </tr>
+      <tr>
+        <td class="sun">27</td>
+        <td>28</td>
+        <td>29</td>
+        <td>30</td>
+        <td>31</td>
+        <td></td>
+        <td class="sat"></td>
+      </tr>
+    </table>
+
+    <script>
+      $('td').on('click', function () {
+        // $('#date').val(`2023년 8월 ${$(this).text()}일`);
+        $('#date').val($(this).text());
+      });
+
+      // $('button').on('click', function (e) {
+      //   e.preventDefault();
+      //   let date = $('#date').val();
+      //   let content = $('#content').val();
+      //   $(`td[value='${date}']`).append(`<div>${content}</div>`);
+      //   $(`td[value='${date}']`).css('color', 'red');
+      //   console.log(date, content);
+      // });
+    </script>
+  </body>
+</html>
