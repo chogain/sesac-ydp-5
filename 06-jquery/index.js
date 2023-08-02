@@ -9,7 +9,7 @@ function submitJs() {
   // 요소 선택
   const div1 = document.getElementById('div1');
 
-  // div 내용을 변경
+  // div 내용 변경
   div1.innerText = '반갑습니다!';
 
   // div border style 추가
