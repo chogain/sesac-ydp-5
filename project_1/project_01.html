@@ -27,6 +27,14 @@
 
     <link rel="stylesheet" href="./project_01.css" />
     <script defer src="./project_01.js"></script>
+
+    <!-- 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header class="container">
@@ -83,121 +91,23 @@
         </ul>
         <a href="#" class="fs-1 me-4">SRING</a>
       </nav>
-      <!-- 사이드바 -->
-      <aside
-        class="accordion accordion-flush sidebar float-start w-25 h-100 d-none"
-      >
-        <div class="accordion-item">
-          <a href="#" class="sidebar-a"> BEST </a>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="flush-headingTwo">
-            <a
-              class="accordion-button collapsed"
-              data-bs-toggle="collapse"
-              data-bs-target="#flush-collapseTwo"
-              aria-expanded="false"
-              aria-controls="flush-collapseTwo"
-            >
-              RING
-            </a>
-          </h2>
-          <ul
-            id="flush-collapseTwo"
-            class="accordion-collapse collapse"
-            aria-labelledby="flush-headingTwo"
-            data-bs-parent="#accordionFlushExample"
-          >
-            <li class="accordion-body"><a href="#">All</a></li>
-            <li class="accordion-body"><a href="#">SILVER</a></li>
-            <li class="accordion-body"><a href="#">GOLD & SILVER</a></li>
-          </ul>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="flush-headingThree">
-            <a
-              class="accordion-button collapsed"
-              data-bs-toggle="collapse"
-              data-bs-target="#flush-collapseThree"
-              aria-expanded="false"
-              aria-controls="flush-collapseThree"
-            >
-              NECKLACE
-            </a>
-          </h2>
-          <ul
-            id="flush-collapseThree"
-            class="accordion-collapse collapse"
-            aria-labelledby="flush-headingThree"
-            data-bs-parent="#accordionFlushExample"
-          >
-            <li class="accordion-body"><a href="#">All</a></li>
-            <li class="accordion-body"><a href="#">SILVER</a></li>
-            <li class="accordion-body"><a href="#">BEADS</a></li>
-          </ul>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="flush-headingFour">
-            <a
-              class="accordion-button collapsed"
-              data-bs-toggle="collapse"
-              data-bs-target="#flush-collapseFour"
-              aria-expanded="false"
-              aria-controls="flush-collapseFour"
-            >
-              BRACELET, BANGLE
-            </a>
-          </h2>
-          <ul
-            id="flush-collapseFour"
-            class="accordion-collapse collapse"
-            aria-labelledby="flush-headingFour"
-            data-bs-parent="#accordionFlushExample"
-          >
-            <li class="accordion-body"><a href="#">All</a></li>
-            <li class="accordion-body"><a href="#">BRACELET</a></li>
-            <li class="accordion-body"><a href="#">BANGLE</a></li>
-          </ul>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="flush-headingFive">
-            <a
-              class="accordion-button collapsed"
-              data-bs-toggle="collapse"
-              data-bs-target="#flush-collapseFive"
-              aria-expanded="false"
-              aria-controls="flush-collapseFive"
-            >
-              ETC, OBJECT
-            </a>
-          </h2>
-          <ul
-            id="flush-collapseFive"
-            class="accordion-collapse collapse"
-            aria-labelledby="flush-headingFive"
-            data-bs-parent="#accordionFlushExample"
-          >
-            <li class="accordion-body"><a href="#">All</a></li>
-          </ul>
-        </div>
-      </aside>
 
       <!-- breakpoint lg 이상일 때 보이는 nav 컴포넌트 -->
       <a href="#" class="d-none d-lg-block text-end fs-1 me-4">SRING</a>
       <nav class="navbar d-none d-lg-block">
-        <div class="container-fluid">
+        <div class="container p-0">
           <ul class="navbar-nav flex-row">
             <li class="nav-item">
               <a class="nav-link px-2" href="#">Cart</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link px-2" href="#">Mypage</a>
+              <a class="nav-link px-2" href="#">MyPage</a>
             </li>
             <li class="nav-item">
               <a class="nav-link px-2" href="#">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link px-2" href="#">search</a>
+              <a class="nav-link px-2" href="#">Search</a>
             </li>
           </ul>
           <ul class="nav justify-content-end">
@@ -293,7 +203,7 @@
         <div class="row g-0">
           <div class="col-md-8">
             <div
-              id="carouselExampleFade"
+              id="carousel-wave-necklace"
               class="carousel slide carousel-fade"
               data-bs-ride="carousel"
             >
@@ -323,7 +233,7 @@
               <button
                 class="carousel-control-prev"
                 type="button"
-                data-bs-target="#carouselExampleFade"
+                data-bs-target="#carousel-wave-necklace"
                 data-bs-slide="prev"
               >
                 <span
@@ -335,7 +245,7 @@
               <button
                 class="carousel-control-next"
                 type="button"
-                data-bs-target="#carouselExampleFade"
+                data-bs-target="#carousel-wave-necklace"
                 data-bs-slide="next"
               >
                 <span
@@ -347,9 +257,9 @@
             </div>
           </div>
           <div class="col-md-4 d-flex align-items-center">
-            <div class="card-body">
+            <div class="card-body pe-0">
               <h5 class="card-title">Wave Heart Necklace</h5>
-              <p class="card-text text-end mb-4 d-none d-lg-block d-sm-block">
+              <p class="card-text text-end mb-4 d-md-none d-lg-block">
                 : 햇빛에 빛나는 파도처럼
               </p>
               <p class="card-text">
@@ -372,7 +282,7 @@
         <div class="row g-0 d-flex flex-row-reverse">
           <div class="col-md-8">
             <div
-              id="carouselExampleFade"
+              id="carousel-cheery-necklace"
               class="carousel slide carousel-fade"
               data-bs-ride="carousel"
             >
@@ -402,7 +312,7 @@
               <button
                 class="carousel-control-prev"
                 type="button"
-                data-bs-target="#carouselExampleFade"
+                data-bs-target="#carousel-cheery-necklace"
                 data-bs-slide="prev"
               >
                 <span
@@ -414,7 +324,7 @@
               <button
                 class="carousel-control-next"
                 type="button"
-                data-bs-target="#carouselExampleFade"
+                data-bs-target="#carousel-cheery-necklace"
                 data-bs-slide="next"
               >
                 <span
@@ -426,8 +336,8 @@
             </div>
           </div>
           <div class="col-md-4 d-flex align-items-center">
-            <div class="card-body">
-              <h5 class="card-title">Cherry necklace</h5>
+            <div class="card-body ps-0">
+              <h5 class="card-title">Cherry Necklace</h5>
               <p class="card-text text-end mb-4">: 눈부신 붉은 빛</p>
               <p class="card-text">
                 어떤 보석보다
@@ -447,7 +357,7 @@
         <div class="row g-0">
           <div class="col-md-8">
             <div
-              id="carouselExampleFade"
+              id="carousel-lemon-necklace"
               class="carousel slide carousel-fade"
               data-bs-ride="carousel"
             >
@@ -477,7 +387,7 @@
               <button
                 class="carousel-control-prev"
                 type="button"
-                data-bs-target="#carouselExampleFade"
+                data-bs-target="#carousel-lemon-necklace"
                 data-bs-slide="prev"
               >
                 <span
@@ -489,7 +399,7 @@
               <button
                 class="carousel-control-next"
                 type="button"
-                data-bs-target="#carouselExampleFade"
+                data-bs-target="#carousel-lemon-necklace"
                 data-bs-slide="next"
               >
                 <span
@@ -501,8 +411,8 @@
             </div>
           </div>
           <div class="col-md-4 d-flex align-items-center">
-            <div class="card-body">
-              <h5 class="card-title">Lemon necklace</h5>
+            <div class="card-body pe-0">
+              <h5 class="card-title">Lemon Necklace</h5>
               <p class="card-text text-end mb-4">: 상큼한 그 순간을</p>
               <p class="card-text">
                 한 입 베어문 순간
@@ -524,7 +434,7 @@
         <div class="row g-0 d-flex flex-row-reverse">
           <div class="col-md-8">
             <div
-              id="carouselExampleFade"
+              id="carousel-wave-ring"
               class="carousel slide carousel-fade"
               data-bs-ride="carousel"
             >
@@ -547,7 +457,7 @@
               <button
                 class="carousel-control-prev"
                 type="button"
-                data-bs-target="#carouselExampleFade"
+                data-bs-target="#carousel-wave-ring"
                 data-bs-slide="prev"
               >
                 <span
@@ -559,7 +469,7 @@
               <button
                 class="carousel-control-next"
                 type="button"
-                data-bs-target="#carouselExampleFade"
+                data-bs-target="#carousel-wave-ring"
                 data-bs-slide="next"
               >
                 <span
@@ -571,9 +481,9 @@
             </div>
           </div>
           <div class="col-md-4 d-flex align-items-center">
-            <div class="card-body">
+            <div class="card-body ps-0">
               <h5 class="card-title">GLISTENING WATER</h5>
-              <p class="card-text text-end mb-4 d-none d-lg-block d-sm-block">
+              <p class="card-text text-end mb-4 d-md-none d-lg-block">
                 <small>: 햇빛이나 달빛에 비쳐 반짝이는 잔물결</small>
               </p>
               <p class="card-text">
@@ -591,6 +501,225 @@
           </div>
         </div>
       </div>
+
+      <h3 class="text-end mt-5"><a href="#">Ring +</a></h3>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card h-100">
+            <img
+              src="./img/wave_ring1.png
+            "
+              class="card-img-top"
+              alt="윤슬반지"
+            />
+            <div class="card-body">
+              <h5 class="card-title">GLISTENING WATER</h5>
+              <p class="text-end">35,000won</p>
+              <p class="card-text">
+                윤슬 은반지 볼드링<br />물결 플랫링 유니크커플링
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img
+              src="./img/wave_ring1.png
+            "
+              class="card-img-top"
+              alt="윤슬반지"
+            />
+            <div class="card-body">
+              <h5 class="card-title">GLISTENING WATER</h5>
+              <p class="text-end">35,000won</p>
+              <p class="card-text">
+                윤슬 은반지 볼드링<br />물결 플랫링 유니크커플링
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img
+              src="./img/wave_ring1.png
+            "
+              class="card-img-top"
+              alt="윤슬반지"
+            />
+            <div class="card-body">
+              <h5 class="card-title">GLISTENING WATER</h5>
+              <p class="text-end">35,000won</p>
+              <p class="card-text">
+                윤슬 은반지 볼드링<br />물결 플랫링 유니크커플링
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img
+              src="./img/wave_ring1.png
+            "
+              class="card-img-top"
+              alt="윤슬반지"
+            />
+            <div class="card-body">
+              <h5 class="card-title">GLISTENING WATER</h5>
+              <p class="text-end">35,000won</p>
+              <p class="card-text">
+                윤슬 은반지 볼드링<br />물결 플랫링 유니크커플링
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3 class="text-end mt-5"><a href="#">Necklace +</a></h3>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card h-100">
+            <img
+              src="./img/cherry_necklace2.png"
+              class="card-img-top"
+              alt="체리목걸이"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Cherry Necklace</h5>
+              <p class="text-end">35,000won</p>
+              <p class="card-text">체리 목걸이<br />여름 실버 목걸이</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img
+              src="./img/lemon_necklace2.png"
+              class="card-img-top"
+              alt="레몬목걸이"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Lemon Necklace</h5>
+              <p class="text-end">35,000won</p>
+              <p class="card-text">레몬 목걸이<br />여름 실버 목걸이</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img
+              src="./img/Peach_necklace2.png"
+              class="card-img-top"
+              alt="복숭아목걸이"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Peach Necklace</h5>
+              <p class="text-end">35,000won</p>
+              <p class="card-text">복숭아 목걸이<br />여름 실버 목걸이</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img
+              src="./img/wave_heart_necklace_big2.png"
+              class="card-img-top"
+              alt="파도목걸이"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Wave Heart Necklace</h5>
+              <p class="text-end">35,000won</p>
+              <p class="card-text">파도 목걸이<br />여름 실버 목걸이</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img
+              src="./img/cherry_necklace2.png"
+              class="card-img-top"
+              alt="체리목걸이"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Cherry Necklace</h5>
+              <p class="text-end">35,000won</p>
+              <p class="card-text">체리 목걸이<br />여름 실버 목걸이</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img
+              src="./img/lemon_necklace2.png"
+              class="card-img-top"
+              alt="레몬목걸이"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Lemon Necklace</h5>
+              <p class="text-end">35,000won</p>
+              <p class="card-text">레몬 목걸이<br />여름 실버 목걸이</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img
+              src="./img/Peach_necklace2.png"
+              class="card-img-top"
+              alt="복숭아목걸이"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Peach Necklace</h5>
+              <p class="text-end">35,000won</p>
+              <p class="card-text">복숭아 목걸이<br />여름 실버 목걸이</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img
+              src="./img/wave_heart_necklace_big2.png"
+              class="card-img-top"
+              alt="파도목걸이"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Wave Heart Necklace</h5>
+              <p class="text-end">35,000won</p>
+              <p class="card-text">파도 목걸이<br />여름 실버 목걸이</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
+
+    <footer class="mt-3 pb-0 footer">
+      <div class="container d-flex justify-content-end">
+        <div class="row w-50 flex-row">
+          <div class="footer-item w-75">
+            <p class="mb-2">(주) 스링 / 개인정보 책임자: 심청이</p>
+            <p class="mb-2">통신판매신고: 000 - 000 - 000000</p>
+            <p class="mb-2">등록번호: 000 - 000 - 000000</p>
+            <p class="mb-2">sring@sring.com</p>
+            <p>Phone: +1 123-456-7890</p>
+          </div>
+          <div class="footer-item w-25 px-0">
+            <p class="mb-2">Follow Us</p>
+            <a
+              href="https://www.instagram.com/sring_jewelry/"
+              class="mb-2 d-block"
+              ><i class="fab fa-instagram">인스타그램</i></a
+            >
+            <a
+              href="https://smartstore.naver.com/sringjewelry"
+              class="mb-2 d-block"
+              ><i class="fab fa-naverstore"></i>스마트스토어</a
+            >
+            <a
+              href="https://www.idus.com/w/artist/331912fd-3de6-44a1-9224-fa71c6ee391c/product"
+              class="mb-2 d-block"
+              ><i class="fab fa-idus">아이디어스</i></a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

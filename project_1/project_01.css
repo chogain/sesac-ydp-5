@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Nanum Myeongjo', serif;
 }
 
 a {
@@ -25,8 +26,18 @@ li {
   color: black;
 }
 
+.nav-link:focus,
+.nav-link:hover {
+  color: black;
+}
+
 .accordion-button:not(.collapsed) {
   background-color: white;
+}
+
+.sidebar-a {
+  border-top: var(--bs-accordion-border-width) solid
+    var(--bs-accordion-border-color);
 }
 
 .sidebar-a,
@@ -46,9 +57,31 @@ li {
   transition: var(--bs-accordion-transition);
 }
 
-.sidebar-a {
-  border-top: var(--bs-accordion-border-width) solid
-    var(--bs-accordion-border-color);
+.dropdown-menu {
+  border-radius: 0;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
+}
+
+.sidebar {
+  background-color: white;
+  margin-right: auto;
+  position: absolute;
+  transform: translate(-15px, -60px);
+  z-index: 1;
+  height: 100%;
+}
+
+.backdrop {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+  filter: brightness(70%);
+}
+
+.body-scrollDisable {
+  overflow: hidden;
 }
 
 .main-text {
@@ -83,25 +116,7 @@ li {
   border: none;
 }
 
-.dropdown:hover .dropdown-menu {
-  display: block;
-  margin-top: 0;
-}
-
-.sidebar {
-  background-color: white;
-  margin-right: auto;
-  position: absolute;
-  transform: translate(-15px, -60px);
-  z-index: 1;
-  height: 100%;
-}
-
-.backdrop {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
-  filter: brightness(70%);
-}
-
-.body-backdrop {
-  overflow: hidden;
+.footer {
+  font-size: 0.7rem;
+  padding: 55px 0;
 }
