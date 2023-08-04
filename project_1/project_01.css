@@ -94,9 +94,14 @@ li {
   position: absolute;
   transform: translate(-15px, -60px);
   z-index: 1;
+  height: 100%;
 }
 
-.back-drop {
+.backdrop {
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
   filter: brightness(70%);
+}
+
+.body-backdrop {
+  overflow: hidden;
 }
