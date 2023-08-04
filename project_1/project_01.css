@@ -9,6 +9,18 @@ a {
   text-decoration: none;
 }
 
+body,
+aside {
+  margin-top: 60px;
+}
+
+ol,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
 .nav-link {
   color: black;
 }
@@ -17,9 +29,58 @@ a {
   background-color: white;
 }
 
-header img {
-  width: 100px;
-  height: 100px;
+.sidebar-a,
+.accordion-body {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: var(--bs-accordion-btn-padding-y) var(--bs-accordion-btn-padding-x);
+  font-size: 1rem;
+  color: var(--bs-accordion-btn-color);
+  text-align: left;
+  background-color: var(--bs-accordion-btn-bg);
+  border: 0;
+  border-radius: 0;
+  overflow-anchor: none;
+  transition: var(--bs-accordion-transition);
+}
+
+.sidebar-a {
+  border-top: var(--bs-accordion-border-width) solid
+    var(--bs-accordion-border-color);
+}
+
+.main-text {
+  font-size: 2rem;
+  text-align: end;
+  margin: 20px 0 40px 0;
+}
+
+@media (max-width: 760px) {
+  .main-text {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .main-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .main-text {
+    font-size: 0.7rem;
+  }
+
+  .card-body {
+    font-size: 0.7rem;
+  }
+}
+
+.card {
+  border: none;
 }
 
 .dropdown:hover .dropdown-menu {
@@ -27,23 +88,20 @@ header img {
   margin-top: 0;
 }
 
-/* img,
-.carousel-inner {
-  height: 300px;
-  width: 600px;
-} */
-
 .sidebar {
   background-color: white;
-  height: 100vh;
   margin-right: auto;
-  z-index: 3;
+  position: absolute;
+  transform: translate(-15px, -60px);
+  z-index: 1;
+  height: 100%;
 }
 
 .backdrop {
-  height: 100vh;
-  width: 80%;
-  background-color: rgba(0, 0, 0, 0.5);
-  position: absolute;
-  z-index: 5;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+  filter: brightness(70%);
+}
+
+.body-backdrop {
+  overflow: hidden;
 }
