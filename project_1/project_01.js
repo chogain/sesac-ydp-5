@@ -1,11 +1,13 @@
 $('.hamburgerIcon').on('click', () => {
   $('aside').toggleClass('d-none');
-  $('main').toggleClass('back-drop');
+  $('main').toggleClass('backdrop');
+  $('body').toggleClass('body-backdrop');
 });
 
 $('main').on('click', () => {
-  if ($('main').hasClass('back-drop')) {
+  if ($('main').hasClass('backdrop')) {
     $('aside').toggleClass('d-none');
-    $('main').toggleClass('back-drop');
+    $('main').toggleClass('backdrop');
+    $('body').toggleClass('body-backdrop');
   }
 });
