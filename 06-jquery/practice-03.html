@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>실습19. 클래스 바꾸기</title>
+    <title>스케줄러 만들기</title>
 
     <!-- TODO: jQuery CDN 추가 -->
     <script
@@ -32,7 +32,6 @@
 
       tr:not(.day) > td > div {
         margin-top: 5px;
-        background-color: pink;
       }
 
       .sun {
@@ -47,7 +46,7 @@
   <body>
     <form>
       <label for="date">날짜 : </label>
-      <input type="text" id="date" />
+      <input type="text" id="date" disabled />
       <br />
       <label for="content">내용 : </label>
       <input type="text" id="content" />
@@ -69,11 +68,7 @@
       <tr>
         <td class="sun"></td>
         <td></td>
-        <td>
-          1
-          <div>sdfk</div>
-          <div>sdfk</div>
-        </td>
+        <td>1</td>
         <td>2</td>
         <td>3</td>
         <td>4</td>
@@ -118,19 +113,30 @@
     </table>
 
     <script>
+      let selectedDate;
+
       $('td').on('click', function () {
-        // $('#date').val(`2023년 8월 ${$(this).text()}일`);
         $('#date').val($(this).text());
+        selectedDate = $(this);
       });
 
-      // $('button').on('click', function (e) {
-      //   e.preventDefault();
-      //   let date = $('#date').val();
-      //   let content = $('#content').val();
-      //   $(`td[value='${date}']`).append(`<div>${content}</div>`);
-      //   $(`td[value='${date}']`).css('color', 'red');
-      //   console.log(date, content);
-      // });
+      $('button').on('click', function (e) {
+        e.preventDefault();
+
+        let date = $('#date');
+        let content = $('#content');
+
+        if (!selectedDate) {
+          alert('날짜를 선택해 주세요.');
+        } else if (content.val().length === 0) {
+          alert('내용을 입력해주세요.');
+        } else {
+          selectedDate.append(`<div>${content.val()}</div>`);
+        }
+
+        date.val('');
+        content.val('');
+      });
     </script>
   </body>
 </html>
