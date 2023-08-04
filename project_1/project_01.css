@@ -51,11 +51,6 @@ li {
     var(--bs-accordion-border-color);
 }
 
-/* header img {
-  width: 100px;
-  height: 100px;
-} */
-
 .main-text {
   font-size: 2rem;
   text-align: end;
@@ -100,16 +95,6 @@ li {
   transform: translate(-15px, -60px);
   z-index: 1;
 }
-
-/* .main-text > div {
-  font-size: calc(1.525rem + 3.3vw);
-}
-
-@media (max-width: 500px) {
-  .main-text {
-    font-size: 1rem;
-  }
-} */
 
 .back-drop {
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
