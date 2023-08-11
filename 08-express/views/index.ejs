@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <%- include('./includes/head', {title: '홈'}) %>
+    <!-- index.ejs에서만 적용하고 싶은 home.css파일 가져오는 방법 -->
+    <link rel="stylesheet" href="/public/css/home.css" />
   </head>
   <body>
     <%- include('./includes/header') %>
