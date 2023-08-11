@@ -151,3 +151,140 @@ const [one1, two1, ...rest2] = numbers;
 console.log(one1); // 1
 console.log(two1); // 2
 console.log(rest2); // [ 3, 4, 5, 6, 7, 8 ]
+
+console.clear();
+// -------------------------------------------
+
+// 클래스
+// : 객체 생성 템플릿 => 객체를 만들기 위해 사용!
+
+// 집이라는 현실 세계의 객체 생성
+/* 
+속성: 
+    만들어진 연도(Number)
+    집의 이름(String)
+    창문 갯수(Number)
+메서드:
+    2023 - 만들어진 연도 콘솔창에 출력하는 "건물의 나이 메소드"
+    창문의 갯수 콘솔창에 출력하는 메소드
+*/
+class House {
+  // 생성자 함수, 객체의 속성(내부에서 사용할 변수) 부여
+  // 생성자 함수: 클래스를 이용해 객체를 생성할 때 마다 속성을 초기화
+  constructor(year, name, window) {
+    this.year = year;
+    this.name = name;
+    this.window = window;
+  }
+
+  // 객체 메소드
+  getAge() {
+    console.log(
+      `${this.name}은(는) 건축한지 ${2023 - this.year}년 되었습니다.`
+    );
+  }
+  getWindow() {
+    console.log(`${this.name}의 창문은 ${this.window}개 입니다.`);
+  }
+}
+
+// 클래스를 이용해 객체 생성
+const house1 = new House(1990, '롯데캐슬', 1);
+console.log('house1 >> ', house1);
+console.log(typeof house1);
+console.log(house1.year);
+house1.getAge();
+house1.getWindow();
+
+const house2 = new House(2007, '자이', 10);
+console.log(house2);
+house2.getAge();
+house2.getWindow();
+
+// 실습 Shape 클래스 만들기
+class Shape {
+  constructor(width, height) {
+    this.width = width;
+    this.height = height;
+  }
+
+  getArea() {
+    return this.width * this.height;
+  }
+}
+
+let rec1 = new Shape(3, 4);
+console.log(rec1.getArea());
+
+// 클래스 상속
+// - extends 키워드를 사용해 상속 가능
+//- 상속을 이용하면 기존의 class 속성과 메소드를 받아와 사용하되, 추가적인 속성과 메소드를 더 정의할 수 있음
+class Apartment extends House {
+  constructor(year, name, window, floor, windowMaker) {
+    // 부모 객체에서 상속 받아옴 == 상속한 부모 클래스의 생성자 호출
+    super(year, name, window);
+    this.floor = floor;
+    this.windowMaker = windowMaker;
+  }
+
+  getAptInfo() {
+    return `${this.year}년에 지어진 ${this.name} 아파트의 총 층수는 ${this.floor} 이며, 창문의 개수는 ${this.window}`;
+  }
+
+  // 오버라이딩(overriding)
+  // 부모 클래스에 정의되어 있는 메서드 이름을 동일하게 쓰되, 내용은 다를 때
+  getWindow() {
+    return `${this.name} 아파트의 ${this.window}개의 창문은 ${this.windowMaker}에서 생산되었습니다.`;
+  }
+}
+
+const apt1 = new Apartment(2022, '레미안', 3, 20, 'KCC');
+console.log(apt1.getAptInfo());
+
+console.clear();
+// 실습 클래스 상속 (선택)
+// Rectangle(직사각형) 클래스 만들기
+class Rectangle extends Shape {
+  constructor(width, height) {
+    super(width, height);
+  }
+
+  diagonal() {
+    return Math.sqrt(this.width ** 2 + this.height ** 2);
+  }
+}
+
+// Triangle(삼각형) 클래스 만들기
+class Triangle extends Shape {
+  constructor(width, height) {
+    super(width, height);
+  }
+
+  getArea() {
+    return (this.width * this.height) / 2;
+  }
+}
+
+// Circle (원) 클래스 만들기
+class Circle extends Shape {
+  constructor(width, height, radius) {
+    super(width, height);
+    this.radius = radius;
+  }
+
+  getArea() {
+    return (this.radius / 360) * 3.14 * (this.width / 2) ** 2;
+  }
+}
+
+const rectangle1 = new Rectangle(4, 8);
+console.log(rectangle1);
+console.log(rectangle1.getArea());
+
+const circle1 = new Circle(4, 4, 90);
+console.log(circle1);
+console.log(circle1.getArea());
+
+const triangle1 = new Triangle(2, 3);
+console.log(triangle1);
+console.log(triangle1.getArea());
