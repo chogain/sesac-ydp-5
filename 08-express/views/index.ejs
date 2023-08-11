@@ -3,13 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>메인 페이지</title>
+    <%- include('./includes/head', {title: '홈'}) %>
   </head>
   <body>
+    <%- include('./includes/header') %>
     <h1>Hello Express</h1>
-    <p>Nice to meet you</p>
+    <p>Nice to meet you, <%= userId %>!</p>
+    <p>Your PW is <%= userPw %></p>
     <% for (let i = 0; i < 5;i++) { %>
     <div><%= i %></div>
     <% } %>
+
+    <h2><%= userId %></h2>
+    <!-- for문 -->
+    <% for (let i = 0; i < btns.length; i++) { %>
+    <button type="button" class="btn btn-primary mb-2"><%= btns[i] %></button>
+    <% } %>
+
+    <br />
+    <!-- for of문 -->
+    <% for (let btn of btns) { %>
+    <button type="button" class="btn btn-primary mb-2"><%= btn %></button>
+    <% } %>
+
+    <br />
+    <a href="/sesac">SeSAC</a>
+    <br />
+
+    <span><%= me.name %></span>
+    <span><%= me.msg %></span>
+
+    <br />
   </body>
 </html>
