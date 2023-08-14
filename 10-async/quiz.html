@@ -10,23 +10,39 @@
 
     <script>
       // 1. 1초 뒤에 body 태그의 색상을 빨간색으로 변경 (setTimeout)
-      setTimeout(() => {
-        document.querySelector('body').style.backgroundColor = 'red';
-        setTimeout(() => {
-          document.querySelector('body').style.backgroundColor = 'orange';
-          setTimeout(() => {
-            document.querySelector('body').style.backgroundColor = 'yellow';
-            setTimeout(() => {
-              document.querySelector('body').style.backgroundColor = 'green';
-              setTimeout(() => {
-                document.querySelector('body').style.backgroundColor = 'blue';
-              }, 1000);
-            }, 1000);
-          }, 1000);
-        }, 1000);
-      }, 1000);
+      // setTimeout(() => {
+      //   document.querySelector('body').style.backgroundColor = 'red';
+      //   setTimeout(() => {
+      //     document.querySelector('body').style.backgroundColor = 'orange';
+      //     setTimeout(() => {
+      //       document.querySelector('body').style.backgroundColor = 'yellow';
+      //       setTimeout(() => {
+      //         document.querySelector('body').style.backgroundColor = 'green';
+      //         setTimeout(() => {
+      //           document.querySelector('body').style.backgroundColor = 'blue';
+      //         }, 1000);
+      //       }, 1000);
+      //     }, 1000);
+      //   }, 1000);
+      // }, 1000);
 
       // 2. 1초 뒤에 body 태그의 색상을 빨 -> 1초 뒤 주 -> ... -> 1초 뒤에 파란색
+      const colors = ['red', 'orange', 'yellow', 'green', 'blue'];
+      function changeBackgroundColor(color) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            document.querySelector('body').style.backgroundColor = color;
+            console.log(color);
+            resolve();
+          }, 1000);
+        });
+      }
+
+      changeBackgroundColor('red')
+        .then(() => changeBackgroundColor('orange'))
+        .then(() => changeBackgroundColor('yellow'))
+        .then(() => changeBackgroundColor('green'))
+        .then(() => changeBackgroundColor('blue'));
     </script>
   </body>
 </html>
