@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- Axios CDN -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>동적 폼 실습</h1>
+    <hr />
+    <h2>실습1. axios get 회원가입</h2>
+    <form action="/dynamic-form" method="get" name="resister">
+      <label for="username">이름</label>
+      <input type="text" name="username" id="username" />
+      <br />
+
+      <fieldset>
+        <legend>성별</legend>
+        <input type="radio" name="gender" id="male" value="male" checked />
+        <label for="male">남자</label>
+        <input type="radio" name="gender" id="female" value="female" />
+        <label for="female">여자</label>
+      </fieldset>
+      <br />
+
+      <fieldset>
+        <legend>생년월일</legend>
+        <select name="birthYear" id="year">
+          <% for (let i = 0; i < 50; i++) { %>
+          <option value="<%= 2010 - i %>"><%= 2010 - i %></option>
+          <% } %>
+        </select>
+        <label for="year">년</label>
+        <select name="birthMonth" id="month">
+          <% for (let i = 1; i < 13; i++) { %>
+          <option value="<%= i %>"><%= i %></option>
+          <% } %>
+        </select>
+        <label for="month">월</label>
+        <select name="birthDay" id="day">
+          <% for (let i = 1; i < 31; i++) { %>
+          <option value="<%= i %>"><%= i %></option>
+          <% } %>
+        </select>
+        <label for="day">일</label>
+      </fieldset>
+      <br />
+
+      <fieldset>
+        <legend>관심사</legend>
+        <input
+          type="checkbox"
+          name="hobby"
+          id="travel"
+          value="travel"
+          checked
+        />
+        <label for="travle">여행</label>
+        <input type="checkbox" name="hobby" id="fashion" value="fashion" />
+        <label for="fashion">패션</label>
+        <input type="checkbox" name="hobby" id="food" value="food" />
+        <label for="food">음식</label>
+      </fieldset>
+      <br />
+
+      <button type="button" onclick="resister()">회원가입</button>
+      <div class="resisterResult"></div>
+    </form>
+
+    <hr />
+    <h2>실습2. axios post 로그인</h2>
+    <p style="color: gray; font-size: 13px">
+      (참고) app.js에 저장한 아이디는 banana이고, 비밀번호는 4321입니다.
+      아이디와 비밀번호가 일치할 때와 불일치할 때 어떻게 다른지 확인해보세요!!
+    </p>
+    <form action="/dynamic-form" method="get" name="login">
+      <label for="userId">아이디 </label>
+      <input type="text" id="userId" name="userId" required="" />
+      <label for="userPw">비밀번호 </label>
+      <input type="password" id="userPw" name="userPw" required="" />
+      <button type="button" onclick="login()">로그인</button>
+      <div class="loginResult"></div>
+    </form>
+
+    <script>
+      const registerResult = document.querySelector('.resisterResult');
+      const loginResult = document.querySelector('.loginResult');
+
+      function resister() {
+        const form = document.forms['register'];
+        console.dir(form);
+        const data = {
+          username: form.username.value,
+        };
+
+        if (!form.username.checkValidity()) {
+          registerResult.textContent = '이름은 필수 값입니다!';
+          return;
+        }
+
+        axios({
+          method: 'GET',
+          url: '/dynamic-form',
+          params: data,
+        }).then(function (response) {
+          console.log(response);
+          console.log(response.data);
+          registerResult.textContent = `${response.data.username}님 환영합니다! 가입이 완료되었습니다.🎉`;
+          registerResult.classList.add('success');
+        });
+      }
+
+      function login() {
+        console.log('click login');
+
+        const form = document.forms['login'];
+        console.dir(form);
+        const data = {
+          userId: form.userId.value,
+          userPw: form.userPw.value,
+        };
+        if (!form.userId.checkValidity() || !form.userPw.checkValidity()) {
+          loginResult.textContent = '아이디와 비밀번호는 필수 값입니다.';
+          return;
+        }
+
+        axios({
+          method: 'POST',
+          url: '/dynamic-form',
+          data: data,
+        }).then(function (response) {
+          console.log(response);
+          console.log(response.data);
+
+          if (response.data.isSuccess) {
+            loginResult.textContent = `${response.data.userInfo.userId}님! 로그인 성공😁`;
+            loginResult.classList.remove('error');
+            loginResult.classList.add('success');
+          } else {
+            loginResult.textContent = '아이디 또는 패스워드 오류😥';
+            loginResult.classList.remove('success');
+            loginResult.classList.add('error');
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

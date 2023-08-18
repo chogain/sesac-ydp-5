@@ -41,6 +41,16 @@ app.post('/result2', (req, res) => {
   });
 });
 
+app.get('/dynamic-form', (req, res) => {
+  res.render('dynamic-form');
+  res.send(req.query);
+});
+
+app.post('/dynamic-form', (req, res) => {
+  res.render('dynamic-form');
+  res.send(req.body);
+});
+
 app.listen(PORT, () => {
   console.log(`${PORT} is opening!`);
 });
