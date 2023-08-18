@@ -11,6 +11,8 @@
       integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
       crossorigin="anonymous"
     ></script>
+    <!-- Axios CDN -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <h1>동적 폼 전송 연습</h1>
@@ -28,11 +30,21 @@
       <label for="female">여성</label>
       <br />
 
-      <button type="button" onclick="ajaxGet()">Ajax GET 제출</button>
+      <button type="button" onclick="ajaxGet();">Ajax GET 제출</button>
       <button type="button" onclick="ajaxPost();">Ajax POST 제출</button>
-      <button type="button" onclick="axiosGet()">Axios GET 제출</button>
+      <br />
+
+      <button type="button" onclick="axiosGet();">Axios GET 제출</button>
+      <button type="button" onclick="axiosGetWithAsyncAwait();">
+        Axios GET (async/await 사용) 제출
+      </button>
       <button type="button" onclick="axiosPost();">Axios POST 제출</button>
-      <button type="button" onclick="fetchGet()">Fetch GET 제출</button>
+      <button type="button" onclick="axiosPostWithAsyncAwait();">
+        Axios POST (async/await 사용) 제출
+      </button>
+      <br />
+
+      <button type="button" onclick="fetchGet();">Fetch GET 제출</button>
       <button type="button" onclick="fetchPost();">Fetch POST 제출</button>
     </form>
     <br />
@@ -77,6 +89,7 @@
           },
         });
       }
+
       function ajaxPost() {
         console.log('ajaxPost 함수 호출');
 
@@ -99,6 +112,180 @@
             );
           },
         });
+      }
+
+      function axiosGet() {
+        console.log('axiosGet 함수 호출');
+
+        const form = document.forms['resister'];
+        const data = {
+          name: form.name.value,
+          gender: form.gender.value,
+        };
+
+        // axios 요청의 결과는 Promise 객체
+        // -> then, catch 메서드로 체이닝 가능
+        // -> async/await 사용 가능
+        axios({
+          // method: 'get', // 요청 방식 (= form method 속성)
+          // url: '/axios', // 요청 경로 (= form action 속성)
+          // params: data, // 서버로 보낼 데이터 (query string)
+
+          // params 키를 사용하지 않고 query string을 직접 정의해서 요청을 보낼 수 있음 (위와 동일한 코드)
+          method: 'get', // 요청 방식 (= form method 속성)
+          url: `/axios?name=${form.name.value}&gender=${form.gender.value}`, // 요청 경로 (= form action 속성)
+        })
+          .then((res) => {
+            console.log(res); // 서버의 응답 결과
+            console.log(res.data); // 서버의 응답 데이터 확인
+            // $('.result').text(
+            //   `Axios GET 요청 결과 : ${res.data.name}님의 성별은 ${res.data.gender}입니다.`
+            //   );
+
+            // 퀴즈 1. 객체 구조 분해
+            const { name, gender } = res.data;
+            $('.result').text(
+              `Axios GET 요청 결과 : ${name}님의 성별은 ${gender}입니다.`
+            );
+          })
+          .catch((err) => {
+            console.log('axios get에서 error 발생', err);
+          });
+      }
+
+      // 퀴즈 2. axios 요청 처리 async/await 사용
+      async function axiosGetWithAsyncAwait() {
+        console.log('async/await 을 사용한 axiosGetWithAsyncAwait 함수 호출');
+        const form = document.forms['resister'];
+        const data = {
+          name: form.name.value,
+          gender: form.gender.value,
+        };
+        try {
+          const response = await axios.get(
+            `/axios?name=${form.name.value}&gender=${form.gender.value}`
+          );
+          const { name, gender } = response.data;
+          $('.result').text(
+            `Axios GET (async/await 사용) 요청 결과 : ${name}님의 성별은 ${gender}입니다.`
+          );
+        } catch (err) {
+          $('.result').text(
+            '알 수 없는 에러가 발생하였습니다. 다시 시도해주세요.'
+          );
+          console.log('axios get (async/await 사용)에서 error 발생', err);
+        }
+      }
+
+      function axiosPost() {
+        console.log('axiosPost 함수 호출');
+
+        const form = document.forms['resister'];
+        const data = {
+          name: form.name.value,
+          gender: form.gender.value,
+        };
+
+        axios({
+          method: 'post', // 요청 방식 (= form method 속성)
+          url: '/axios', // 요청 경로 (= form action 속성)
+          data: data, // 서버로 보낼 데이터
+        })
+          .then((res) => {
+            console.log(res.data);
+            $('.result').text(
+              `Axios POST 요청 결과 : ${res.data.name}님의 성별은 ${res.data.gender}입니다.`
+            );
+          })
+          .catch((err) => {
+            console.log('axios post 방식에서 error 발생', err);
+          });
+      }
+
+      // 퀴즈 3. axios 요청 처리 async/await 사용
+      async function axiosPostWithAsyncAwait() {
+        console.log('async/await 을 사용한 axiosGetWithAsyncAwait 함수 호출');
+        const form = document.forms['resister'];
+        const data = {
+          name: form.name.value,
+          gender: form.gender.value,
+        };
+        try {
+          const response = await axios({
+            method: 'post',
+            url: '/axios',
+            data: data,
+          });
+          console.log(response);
+          const { name, gender } = response.data;
+          $('.result').text(
+            `Axios GET (async/await 사용) 요청 결과 : ${name}님의 성별은 ${gender}입니다.`
+          );
+        } catch (err) {
+          $('.result').text(
+            '알 수 없는 에러가 발생하였습니다. 다시 시도해주세요.'
+          );
+          console.log('axios get (async/await 사용)에서 error 발생', err);
+        }
+      }
+
+      // fetch(url, options)
+      function fetchGet() {
+        console.log('fetchGet 함수 호출');
+
+        const form = document.forms['resister'];
+        const data = {
+          name: form.name.value,
+          gender: form.gender.value,
+        };
+
+        // fetch는 default로 get 방식으로 작동하기 때문에 options 생략 가능
+        fetch(`/fetch?name=${data.name}&gender=${data.gender}`)
+          .then((res) => {
+            console.log(res);
+            return res.json();
+            // JSON 형태로 응답 데이터를 전달받음. 응답(res) 객체는 json() 메서드를 제공
+            // 응답(res) 객체로부터 JSON 포맷의 응답 전문을 자바스크립트 객체 (js obj)로 변환
+          })
+          .then((data) => {
+            // data 변수 => 직전 then 메서드의 리턴값: res.json()
+            console.log(data);
+            $('.result').text(
+              `Fetch GET 요청 결과 : ${data.name}님의 성별은 ${data.gender}입니다.`
+            );
+          });
+      }
+
+      function fetchPost() {
+        console.log('fetchPost 함수 호출');
+
+        const form = document.forms['resister'];
+        const data = {
+          name: form.name.value,
+          gender: form.gender.value,
+        }; // 서버에 넘겨줄 데이터
+
+        // fetch를 이용해 post 요청을 날릴 경우 option 객체가 반드시 필요함
+        // 1. method 키 post 지정
+        // 2. headers 키 JSON 포맷 사용 선언
+        // 3. body 키 서버로 보낼 데이터
+        fetch(`/fetch`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        })
+          .then((res) => {
+            console.log(res);
+            return res.json();
+          })
+          .then((data) => {
+            console.log(data);
+            $('.result').text(
+              `Fetch POST 요청 결과 : ${data.name}님의 성별은 ${data.gender}입니다.`
+            );
+          });
       }
     </script>
   </body>
