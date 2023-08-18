@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>동적 폼 전송 - ajax</title>
+
+    <!-- jQuery CDN -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <h1>동적 폼 전송 연습</h1>
+
+    <!-- 이름, 성별(라디오버튼) 정보를 입력받는 폼 -->
+    <form name="resister">
+      <label for="name">이름</label>
+      <input type="text" id="name" name="name" value="새싹" />
+      <br />
+
+      성별
+      <input type="radio" name="gender" value="male" checked />
+      <label for="male">남성</label>
+      <input type="radio" name="gender" value="female" />
+      <label for="female">여성</label>
+      <br />
+
+      <button type="button" onclick="ajaxGet()">Ajax GET 제출</button>
+      <button type="button" onclick="ajaxPost();">Ajax POST 제출</button>
+      <button type="button" onclick="axiosGet()">Axios GET 제출</button>
+      <button type="button" onclick="axiosPost();">Axios POST 제출</button>
+      <button type="button" onclick="fetchGet()">Fetch GET 제출</button>
+      <button type="button" onclick="fetchPost();">Fetch POST 제출</button>
+    </form>
+    <br />
+
+    <!-- 동적 폼 전송 결과를 보여줄 곳 -->
+    <div class="result">result</div>
+
+    <script>
+      // frontend JS
+
+      function ajaxGet() {
+        console.log('ajaxGet 함수 호출');
+
+        // 폼 선택
+        const form = document.forms['resister'];
+
+        // 폼 객체 요소 확인
+        console.dir(form); // form
+        console.dir(form.name); // input#name
+        console.dir(form.gender); // RadioNodeList(2)
+        console.dir(form.name.value); // 이름 input에 입력한 값
+        console.dir(form.gender.value); // 성별 radio input에서 선택한 값
+
+        // 요청에 실어서 보낼 데이터 변수 (서버에서 받을 정보)
+        const data = {
+          name: form.name.value,
+          gender: form.gender.value,
+        };
+
+        // ajax로 서버에 Get 요청 보내기
+        $.ajax({
+          type: 'get', // 요청의 종류 (= form의 method 속성)
+          url: '/ajax', // 요청의 경로 (= form의 action 속성)
+          data: data, // 요청에 실어 보낼 데이터 (서버가 받게 될 데이터)
+          success: function (data) {
+            // 요청이 성공적으로 수행되었을 때 실행할 함수
+            console.log(data);
+
+            $('.result').text(
+              `Ajax GET 요청 결과 : ${data.name}님의 성별은 ${data.gender}입니다.`
+            );
+          },
+        });
+      }
+      function ajaxPost() {
+        console.log('ajaxPost 함수 호출');
+
+        const form = document.forms['resister'];
+        const data = {
+          name: form.name.value,
+          gender: form.gender.value,
+        };
+
+        $.ajax({
+          type: 'post', // 요청의 종류 (= form의 method 속성)
+          url: '/ajax', // 요청의 경로 (= form의 action 속성)
+          data: data, // 요청에 실어 보낼 데이터 (서버가 받게 될 데이터)
+          success: function (data) {
+            // 요청이 성공적으로 수행되었을 때 실행할 함수
+            console.log(data);
+
+            $('.result').text(
+              `Ajax POST 요청 결과 : ${data.name}님의 성별은 ${data.gender}입니다.`
+            );
+          },
+        });
+      }
+    </script>
+  </body>
+</html>
