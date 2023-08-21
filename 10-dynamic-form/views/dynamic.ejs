@@ -20,13 +20,13 @@
     <!-- 이름, 성별(라디오버튼) 정보를 입력받는 폼 -->
     <form name="resister">
       <label for="name">이름</label>
-      <input type="text" id="name" name="name" value="새싹" />
+      <input type="text" id="name" name="name" required />
       <br />
 
       성별
-      <input type="radio" name="gender" value="male" checked />
+      <input type="radio" name="gender" value="male" required />
       <label for="male">남성</label>
-      <input type="radio" name="gender" value="female" />
+      <input type="radio" name="gender" value="female" required />
       <label for="female">여성</label>
       <br />
 
@@ -134,6 +134,12 @@
           gender: form.gender.value,
         };
 
+        // 해당 input 요소에 값이 입력되었는지 확인
+        console.log(form.name.checkValidity());
+        // 같은 name으로 묶인 radio btn은 하나만 선택되더라도 true를 반환
+        console.log(form.gender[0].checkValidity());
+        console.log(form.gender[1].checkValidity());
+
         // axios 요청의 결과는 Promise 객체
         // -> then, catch 메서드로 체이닝 가능
         // -> async/await 사용 가능
@@ -173,13 +179,31 @@
           gender: form.gender.value,
         };
         try {
-          const response = await axios.get(
-            `/axios?name=${form.name.value}&gender=${form.gender.value}`
-          );
-          const { name, gender } = response.data;
-          $('.result').text(
-            `Axios GET (async/await 사용) 요청 결과 : ${name}님의 성별은 ${gender}입니다.`
-          );
+          // const response = await axios.get(
+          //   `/axios?name=${form.name.value}&gender=${form.gender.value}`
+          // );
+          // const { name, gender } = response.data;
+          // $('.result').text(
+          //   `Axios GET (async/await 사용) 요청 결과 : ${name}님의 성별은 ${gender}입니다.`
+          // );
+
+          // 폼 유효성 검사
+          // name input에 입력된 값이 없다면, '이름을 입력해주세요!'
+          // gender radio btn을 선택하지 않았다면, '성별을 선택해주세요!'
+          // 둘 다 입력이 잘 되었다면, axios로 back에 요청 날리기
+          if (!form.name.checkValidity()) {
+            $('.result').text('이름을 입력해주세요!');
+          } else if (!form.gender[0].checkValidity()) {
+            $('.result').text('성별을 선택해주세요!');
+          } else {
+            const response = await axios.get(
+              `/axios?name=${form.name.value}&gender=${form.gender.value}`
+            );
+            const { name, gender } = response.data;
+            $('.result').text(
+              `Axios GET (async/await 사용) 요청 결과 : ${name}님의 성별은 ${gender}입니다.`
+            );
+          }
         } catch (err) {
           $('.result').text(
             '알 수 없는 에러가 발생하였습니다. 다시 시도해주세요.'
