@@ -12,7 +12,7 @@ const upload = multer({
 const uploadDetail = multer({
   // storage: 저장할 공간에 대한 정보
   // done(null, xx) null은 error를 의미하는 매개변수
-  // 에러가 없음을 "null"이라고 전달하여 콜백함수 호출
+  // 에러가 없으므로 "null"이라고 전달하여 콜백함수 호출
   storage: multer.diskStorage({
     // done: callbackFnc
     destination(req, file, done) {
