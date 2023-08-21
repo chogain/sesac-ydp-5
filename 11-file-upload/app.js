@@ -32,6 +32,7 @@ const uploadDetail = multer({
 
 app.set('view engine', 'ejs');
 app.use('/views', express.static(__dirname + '/views'));
+app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -84,6 +85,16 @@ app.post(
     console.log(req.files); // { userUploadFiles1: [ {파일_정보} ], userUploadFiles2: [ {파일_정보} ]} : 객체 안에 배열 형태로 각 파일 정보 출력
     console.log(req.body);
     res.send('하나의 input에 여러 개의 file 업로드 완료 v2');
+  }
+);
+
+// 동적 폼 전송
+app.post(
+  '/dynamicFile',
+  uploadDetail.single('dynamicUserUploadFile'),
+  (req, res) => {
+    console.log(req.file);
+    res.send(req.file);
   }
 );
 
