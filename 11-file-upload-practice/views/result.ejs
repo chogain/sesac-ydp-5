@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습 결과 예시</title>
+
+    <!-- TODO: axios cdn 불러오기 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- TODO: CSS 연결 -->
+    <link rel="stylesheet" href="../static/index.css" />
+  </head>
+
+  <body>
+    <!-- TODO: 결과 페이지 완성 -->
+    <section>
+      <img src="<%= file.path %>" alt="사용자가 입력한 이미지" id="userImg" />
+      <div id="userId"><%= body.userId %>님 환영합니다!</div>
+      <div id="userPw">비밀번호: <%= body.userPw %></div>
+      <div id="userName">이름: <%= body.userName %></div>
+      <div id="userAge">나이: <%= body.userAge %></div>
+    </section>
+  </body>
+</html>

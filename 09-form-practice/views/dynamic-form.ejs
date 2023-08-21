@@ -12,7 +12,7 @@
     <h1>동적 폼 실습</h1>
     <hr />
     <h2>실습1. axios get 회원가입</h2>
-    <form action="/dynamic-form" method="get" name="resister">
+    <form action="/dynamic-form" method="get" name="register">
       <label for="username">이름</label>
       <input type="text" name="username" id="username" />
       <br />
@@ -66,8 +66,8 @@
       </fieldset>
       <br />
 
-      <button type="button" onclick="resister()">회원가입</button>
-      <div class="resisterResult"></div>
+      <button type="button" onclick="register()">회원가입</button>
+      <div class="registerResult"></div>
     </form>
 
     <hr />
@@ -86,10 +86,10 @@
     </form>
 
     <script>
-      const registerResult = document.querySelector('.resisterResult');
+      const registerResult = document.querySelector('.registerResult');
       const loginResult = document.querySelector('.loginResult');
 
-      function resister() {
+      function register() {
         const form = document.forms['register'];
         console.dir(form);
         const data = {
@@ -97,20 +97,29 @@
         };
 
         if (!form.username.checkValidity()) {
-          registerResult.textContent = '이름은 필수 값입니다!';
-          return;
+          registerResult.textContent = '이름은 필수 입력 값입니다!';
+        } else if (!form.gender.checkValidity()) {
+          registerResult.textContent = '성별은 필수 입력 값입니다!';
+        } else if (!form.birthYear.checkValidity()) {
+          registerResult.textContent = '생년월일은 필수 입력 값입니다!';
+        } else if (!form.birthMonth.checkValidity()) {
+          registerResult.textContent = '생년월일은 필수 입력 값입니다!';
+        } else if (!form.birthDay.checkValidity()) {
+          registerResult.textContent = '생년월일은 필수 입력 값입니다!';
+        } else if (!form.hobby[0].checkValidity()) {
+          registerResult.textContent = '관심사는 필수 입력 값입니다!';
+        } else {
+          axios({
+            method: 'GET',
+            url: '/dynamic-form',
+            params: data,
+          }).then(function (response) {
+            console.log(response);
+            console.log(response.data);
+            registerResult.textContent = `${response.data.username}님 환영합니다! 가입이 완료되었습니다.🎉`;
+            registerResult.classList.add('success');
+          });
         }
-
-        axios({
-          method: 'GET',
-          url: '/dynamic-form',
-          params: data,
-        }).then(function (response) {
-          console.log(response);
-          console.log(response.data);
-          registerResult.textContent = `${response.data.username}님 환영합니다! 가입이 완료되었습니다.🎉`;
-          registerResult.classList.add('success');
-        });
       }
 
       function login() {
