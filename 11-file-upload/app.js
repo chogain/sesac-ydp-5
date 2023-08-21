@@ -64,6 +64,29 @@ app.post('/upload', uploadDetail.single('userUploadFile'), (req, res) => {
   // }
 });
 
+// 2. array(): 여러 파일을 한 번에 업로드
+// uploadDetail.array('userUploadFiles'): 클라이언트 요청이 들어오면
+// multer 설정(uploadDetail 변수)에 따라 파일을 업로드한 후, req.files 객체 생성
+app.post('/upload/array', uploadDetail.array('userUploadFiles'), (req, res) => {
+  console.log(req.files); // [{파일1_정보}, {파일2_정보}, ... ] : 배열 형태로 각 파일 정보 출력
+  console.log(req.body);
+  res.send('하나의 input에 여러 개의 file 업로드 완료 v1');
+});
+
+// 2. fields(): 여러 파일을 한 번에 업로드
+app.post(
+  '/upload/fields',
+  uploadDetail.fields([
+    { name: 'userUploadFiles1' },
+    { name: 'userUploadFiles2' },
+  ]),
+  (req, res) => {
+    console.log(req.files); // { userUploadFiles1: [ {파일_정보} ], userUploadFiles2: [ {파일_정보} ]} : 객체 안에 배열 형태로 각 파일 정보 출력
+    console.log(req.body);
+    res.send('하나의 input에 여러 개의 file 업로드 완료 v2');
+  }
+);
+
 app.listen(PORT, () => {
   console.log(`${PORT} port is open`);
 });
