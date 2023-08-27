@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MVC 패턴 실습</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>axios post 로그인 MVC 패턴</h1>
+    <form name="login">
+      <span>아이디</span>
+      <input type="text" name="id" />
+      <span>비밀번호</span>
+      <input type="password" name="passwd" />
+      <button type="button" onclick="clickLogin();">로그인</button>
+    </form>
+    <div class="result" style="color: red"></div>
+
+    <script>
+      const result = document.querySelector('.result');
+
+      async function clickLogin() {
+        const form = document.forms['login'];
+        const user = {
+          id: form.id.value,
+          pw: form.passwd.value,
+        };
+
+        if (!form.id.value) {
+          alert('아이디를 입력해주세요.');
+        } else if (!form.passwd.value) {
+          alert('비밀번호를 입력해주세요.');
+        } else {
+          try {
+            const res = await axios({
+              method: 'post',
+              url: '/login',
+              data: user,
+            });
+            console.log('axios post');
+            if (res.data.isLogin) {
+              console.log(res.data);
+              result.innerHTML = `<div style="color: blue;">${res.data.user}님 로그인에 성공하셨습니다.</div>`;
+            } else {
+              console.log(res.data);
+              result.innerHTML = `<div style="color: red;">로그인에 실패했습니다.</div>`;
+            }
+          } catch (error) {
+            console.log('Error!', error);
+            result.innerHTML = `<div style="color:red">에러 발생</div>`;
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
