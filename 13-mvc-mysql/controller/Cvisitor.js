@@ -35,3 +35,7 @@ exports.deleteVisitor = (req, res) => {
     res.send(result); // res.send(true)
   });
 };
+
+exports.render404 = (req, res) => {
+  res.render('404');
+};

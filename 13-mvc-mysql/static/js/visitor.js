@@ -9,19 +9,24 @@ const buttonGroup = document.querySelector('#button-group'); // $('#button-group
 function createVisitor() {
   const form = document.forms['visitor-form'];
 
-  axios({
-    method: 'POST',
-    url: '/visitor',
-    data: {
-      name: form.name.value,
-      comment: form.comment.value,
-    },
-  }).then((res) => {
-    console.log('post /visitor 요청에 대한 응답', res.data);
-    const { id, name, comment } = res.data;
-    // 방금 추가한 방명록 정보를 보이기
-    // : newVisitor 변수에 tr 요소를 생성하고, tbody의 맨마지막 요소로 추가
-    const newVisitor = `
+  if (!form.name.value) {
+    alert('사용자 이름을 작성헤주세요.');
+  } else if (!form.comment.value) {
+    alert('방명록을 작성헤주세요.');
+  } else {
+    axios({
+      method: 'POST',
+      url: '/visitor',
+      data: {
+        name: form.name.value,
+        comment: form.comment.value,
+      },
+    }).then((res) => {
+      console.log('post /visitor 요청에 대한 응답', res.data);
+      const { id, name, comment } = res.data;
+      // 방금 추가한 방명록 정보를 보이기
+      // : newVisitor 변수에 tr 요소를 생성하고, tbody의 맨마지막 요소로 추가
+      const newVisitor = `
         <tr id="tr_${id}">
             <td>${id}</td>
             <td>${name}</td>
@@ -30,8 +35,9 @@ function createVisitor() {
             <td><button type="button" onclick="deleteVisitor(this, ${id})">삭제</button></td>
         </tr>
     `;
-    tbody.insertAdjacentHTML('beforeend', newVisitor); // / $('tbody').append(newVisitor);
-  });
+      tbody.insertAdjacentHTML('beforeend', newVisitor); // / $('tbody').append(newVisitor);
+    });
+  }
 }
 
 function deleteVisitor(obj, id) {
