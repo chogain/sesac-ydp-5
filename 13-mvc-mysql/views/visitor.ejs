@@ -68,13 +68,13 @@
         console.log(form);
 
         if (form.name.value.length === 0 || form.comment.value.length === 0) {
-          alert('이름 또는 방명록 기입!!');
+          alert('이름 또는 방명록은 필수 기입해주세요.');
           clearInput();
           return;
         }
 
         if (form.name.value.length > 10) {
-          alert('이름은 10글자 미만!!');
+          alert('이름은 10글자 미만으로 작성해주세요.');
           clearInput();
           return;
         }
@@ -116,7 +116,7 @@
       // - form input에 값 넣기
       // - [변경], [취소] 버튼 보이기
       async function editVisitor(id) {
-        console.log('edit visitor!!');
+        console.log('edit visitor');
         console.log(id);
 
         // (1) form input에 값 넣기
