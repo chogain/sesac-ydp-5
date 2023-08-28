@@ -1,29 +1,37 @@
-const Visitor = require('../model/Visitor.js');
+const Visitor = require('../model/Visitor');
 
 exports.main = (req, res) => {
   res.render('index');
 };
 
 exports.getVisitors = (req, res) => {
-  // Before
+  // [before]
   // res.render('visitor', { data: Visitor.getVisitors() });
 
-  // After
+  // [after]
+  // console.log(Visitor.getVisitors())
   Visitor.getVisitors((result) => {
-    console.log('controller >> ', result);
+    console.log('controller >>', result);
     res.render('visitor', { data: result });
   });
 };
 
 exports.postVisitor = (req, res) => {
-  console.log(req.body);
+  console.log(req.body); // { name: xx, comment: yy }
+  const { name, comment } = req.body;
+
   Visitor.postVisitor(req.body, (insertId) => {
-    console.log('controller >> ', req.body);
-    const { name, comment } = req.body;
+    console.log('controller >> ', insertId);
     res.send({ id: insertId, name: name, comment: comment });
   });
 };
 
-exports.render404 = (req, res) => {
-  res.render('404');
+exports.deleteVisitor = (req, res) => {
+  console.log(req.body); // { id: xx }
+  const { id } = req.body;
+
+  Visitor.deleteVisitor(id, (result) => {
+    console.log('controller >>', result); // true
+    res.send(result); // res.send(true)
+  });
 };
