@@ -15,6 +15,15 @@ exports.getVisitors = (req, res) => {
   });
 };
 
+exports.postVisitor = (req, res) => {
+  console.log(req.body);
+  Visitor.postVisitor(req.body, (insertId) => {
+    console.log('controller >> ', req.body);
+    const { name, comment } = req.body;
+    res.send({ id: insertId, name: name, comment: comment });
+  });
+};
+
 exports.render404 = (req, res) => {
   res.render('404');
 };
