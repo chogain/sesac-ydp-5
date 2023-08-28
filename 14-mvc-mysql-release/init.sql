@@ -31,3 +31,11 @@ DESC user;
 
 -- user 테이블 데이터 조회
 SELECT * FROM user;
+
+SELECT * FROM mysql.user;
+
+CREATE USER 'user'@'%' IDENTIFIED WiTH mysql_native_password BY '1234';
+
+GRANT ALL PRIVILEGES ON *.* TO 'user'@'%' WITH GRANT OPTION;
+
+FLUSH PRIVILEGES;

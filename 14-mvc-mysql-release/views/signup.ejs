@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <%- include('include/include', { title: '회원가입' })%>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('include/include', { title: '회원가입' })%>
+
+    <!-- axios cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
   <body>
     <h1>회원가입</h1>
     <form name="form_register">
@@ -13,12 +21,39 @@
       <button type="button" onclick="register();">Register</button>
     </form>
     <!-- TODO: href 속성값 설정하기 -->
-    <a href="#">Login</a>
+    <a href="/user/signin">Login</a>
 
     <script>
       // TODO: [Register] 버튼 클릭시 서버에 회원가입 요청하기
       // POST /user/signup
-      function register() {}
+      function register() {
+        const form = document.forms['form_register'];
+
+        if (!form.userid.value) {
+          alert('아이디를 입력헤주세요.');
+        } else if (!form.password.value) {
+          alert('비밀번호를 입력헤주세요.');
+        } else if (!form.name.value) {
+          alert('이름을 입력헤주세요.');
+        } else {
+          axios({
+            method: 'POST',
+            url: '/user/signup',
+            data: {
+              userid: form.userid.value,
+              name: form.name.value,
+              pw: form.password.value,
+            },
+          })
+            .then((result) => {
+              alert('회원가입 완료했습니다.');
+              document.location.href = '/user/signin';
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+      }
     </script>
   </body>
 </html>
