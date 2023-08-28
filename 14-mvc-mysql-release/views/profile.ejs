@@ -94,6 +94,9 @@
             },
           })
             .then((result) => {
+              if (!confirm('회원 삭제 하시겠습니까?')) {
+                return;
+              }
               alert('회원 삭제 성공하였습니다.');
               document.location.href = '/user';
             })
