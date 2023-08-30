@@ -8,7 +8,7 @@ const conn = mysql.createConnection({
   database: 'sesac',
 });
 
-exports.getVisitors = (callback) => {
+exports.getVisitors = (cb) => {
   // [before]
   //   return [
   //     { id: 1, name: '홍길동', comment: '내가 왔다.' },
@@ -21,11 +21,11 @@ exports.getVisitors = (callback) => {
       throw err;
     }
     console.log('model >>', rows);
-    callback(rows);
+    cb(rows);
   });
 };
 
-exports.postVisitor = (data, callback) => {
+exports.postVisitor = (data, cb) => {
   // 매개변수
   // data: 프론트엔드에서 유저가 입력한 값 (req.body)
   // callback: query 실행 후 호출할 함수
@@ -38,12 +38,12 @@ exports.postVisitor = (data, callback) => {
       }
 
       console.log('model >>', rows);
-      callback(rows.insertId);
+      cb(rows.insertId);
     }
   );
 };
 
-exports.deleteVisitor = (id, callback) => {
+exports.deleteVisitor = (id, cb) => {
   console.log('model >>', id); // front에서 알려준 삭제할 데이터의 pk
 
   conn.query(`delete from visitor where id=${id}`, (err, rows) => {
@@ -52,6 +52,30 @@ exports.deleteVisitor = (id, callback) => {
     }
 
     console.log('model >> ', rows);
-    callback(true); // { id: id }로 쓸 수도 있음
+    cb(true); // { id: id }로 쓸 수도 있음
+  });
+};
+
+exports.getVisitor = (id, cb) => {
+  conn.query(`SELECT * FROM visitor WHERE id = ${id}`, (err, rows) => {
+    if (err) {
+      throw err;
+    }
+
+    console.log(rows); // [ {} ]
+    cb(rows[0]);
+  });
+};
+
+exports.updateVisitor = (updateData, cb) => {
+  const { id, name, comment } = updateData;
+  const sql = `UPDATE visitor SET name = "${name}", comment = "${comment}" WHERE id = ${id}`;
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      throw err;
+    }
+
+    console.log(rows);
+    cb();
   });
 };
