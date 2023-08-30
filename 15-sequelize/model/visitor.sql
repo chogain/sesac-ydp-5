@@ -5,7 +5,13 @@ CREATE DATABASE sesac CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 USE sesac;
 
--- MySQL에 접속 가능한 계정 생성
+drop table visitor;
+
+SELECT * FROM visitor;
+
+DESC visitor;
+
+-- MyQL에 접속 가능한 계정 생성
 CREATE USER 'user'@'%' IDENTIFIED WiTH mysql_native_password BY '1234';
 
 -- user 계정에 모든 DB 권한 부여 (모든 DB에 접근 가능하도록)
@@ -23,9 +29,10 @@ CREATE TABLE visitor (
     comment MEDIUMTEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 );
 
-DESC visitor;
-
 INSERT INTO visitor VALUES (1, '홍길동', '내가 왔다.');
 INSERT INTO visitor VALUES (2, '이찬혁', '으라차차');
 
-SELECT * FROM visitor;
+
+
+
+
