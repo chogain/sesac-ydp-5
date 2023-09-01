@@ -1,4 +1,7 @@
 SHOW databases;
+
+CREATE DATABASE kdt;
+
 USE kdt;
 SHOW tables;
 

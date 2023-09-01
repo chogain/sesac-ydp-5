@@ -1,43 +1,67 @@
-const User = require("../model/User");
+const { User } = require('../models');
 
-exports.signup = (req, res) => {
-  res.render("signup");
+exports.main = (req, res) => {
+  res.render('index');
 };
 
-exports.postSignup = (req, res) => {
-  User.postSignup(req.body, () => {
-    res.end();
+exports.signup = (req, res) => {
+  res.render('signup');
+};
+
+exports.postSignup = async (req, res) => {
+  const { userid, pw, name } = req.body;
+  const result = await User.create({
+    userid,
+    name,
+    pw,
   });
+
+  res.end();
 };
 
 exports.signin = (req, res) => {
-  res.render("signin");
+  res.render('signin');
 };
 
-exports.postSignin = (req, res) => {
-  User.postSignin(req.body, (result) => {
-    if (result.length > 0) {
-      res.send(true);
-    } else {
-      res.send(false);
+exports.postSignin = async (req, res) => {
+  const { userid, pw } = req.body;
+  const result = await User.findOne({
+    where: { userid, pw },
+  });
+  console.log('result', result);
+  if (result) {
+    res.send(true);
+  } else {
+    res.send(false);
+  }
+};
+
+exports.postProfile = async (req, res) => {
+  const userid = req.body.userid;
+  const result = await User.findOne({
+    where: { userid },
+  });
+
+  res.render('profile', { data: result });
+};
+
+exports.editProfile = async (req, res) => {
+  const { id, pw, name } = req.body;
+  await User.update(
+    { pw, name },
+    {
+      where: { id },
     }
-  });
+  );
+
+  res.send({ isUpdated: true });
 };
 
-exports.postProfile = (req, res) => {
-  User.postProfile(req.body.userid, (result) => {
-    res.render("profile", { data: result[0] });
+exports.deleteProfile = async (req, res) => {
+  const { id } = req.body;
+  const result = await User.destroy({
+    where: { id },
   });
-};
 
-exports.editProfile = (req, res) => {
-  User.editProfile(req.body, () => {
-    res.send(true);
-  });
-};
-
-exports.deleteProfile = (req, res) => {
-  User.deleteProfile(req.body.id, () => {
-    res.send(true);
-  });
+  res.send(true);
 };
