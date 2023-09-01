@@ -6,7 +6,6 @@ app.set('view engine', 'ejs');
 app.set('/views', 'view');
 
 app.use(express.urlencoded({ extended: true }));
-app.use('/views', express.static(__dirname + '/views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
