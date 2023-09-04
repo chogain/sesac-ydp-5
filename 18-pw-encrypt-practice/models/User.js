@@ -13,11 +13,11 @@ const User = (Sequelize, DataTypes) => {
         type: DataTypes.STRING(255),
         allowNull: false,
       },
-      pw: {
+      name: {
         type: DataTypes.STRING(15),
         allowNull: false,
       },
-      pw: {
+      userid: {
         type: DataTypes.STRING(15),
         allowNull: false,
       },
@@ -25,7 +25,7 @@ const User = (Sequelize, DataTypes) => {
     {
       tableName: 'user',
       freezeTableName: true,
-      timestamp: false,
+      timestamp: true,
     }
   );
 

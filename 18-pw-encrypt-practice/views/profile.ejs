@@ -5,12 +5,7 @@
     <h1><%= data.name %>님 프로필 정보</h1>
 
     <form name="edit-profile">
-      <input
-        type="text"
-        id="userid"
-        value="<%= data.userid %>"
-        readonly
-      /><br />
+      <input type="text" id="userid" value="<%= data.id %>" readonly /><br />
       <input type="text" id="name" value="<%= data.name %>" /><br />
       <input type="password" id="pw" value="<%= data.pw %>" /><br />
       <input type="hidden" id="id" value="<%= data.id %>" /><br />
@@ -28,8 +23,7 @@
           method: 'PATCH',
           url: '/profile/edit',
           data: {
-            id: Number(form.id.value),
-            userid: form.userid.value,
+            id: form.userid.value,
             name: form.name.value,
             pw: form.pw.value,
           },
