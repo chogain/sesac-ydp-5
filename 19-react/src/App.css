@@ -1,0 +1,60 @@
+.test h1 {
+  background-color: azure;
+  color: blue;
+  text-align: center;
+}
+
+.test form {
+  text-align: center;
+}
+
+.inputId,
+.inputPw {
+  margin: 0 0 10px 5px;
+}
+
+.all {
+  display: inline-flex;
+}
+
+.red {
+  background-color: red;
+  width: 100px;
+  height: 100px;
+}
+
+.orange {
+  background-color: orange;
+  width: 100px;
+  height: 150px;
+}
+
+.yellow {
+  background-color: yellow;
+  width: 100px;
+  height: 200px;
+}
+
+.green {
+  background-color: green;
+  width: 100px;
+  height: 250px;
+}
+
+.blue {
+  background-color: blue;
+  width: 100px;
+  height: 300px;
+}
+
+.navy {
+  background-color: navy;
+  width: 100px;
+  height: 350px;
+}
+
+.purple {
+  background-color: purple;
+  width: 100px;
+  height: 400px;
+}
