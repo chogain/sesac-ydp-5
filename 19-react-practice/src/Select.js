@@ -1,10 +1,19 @@
 function Select(props) {
+  const setData = props.setData;
+
   return (
     <>
       과일 :
       <select
         onChange={(e) => {
-          props.setFruit(e.target.value);
+          // 1.
+          // props.setFruit(e.target.value);
+
+          // 2.
+          const fruit = e.target.value;
+          setData((data) => {
+            return { ...data, fruit };
+          });
         }}
       >
         <option value='apple'>사과</option>
@@ -15,7 +24,14 @@ function Select(props) {
       배경색 :
       <select
         onChange={(e) => {
-          props.setBackgroundColor(e.target.value);
+          // 1.
+          // props.setBackgroundColor(e.target.value);
+
+          // 2.
+          const backgroundColor = e.target.value;
+          setData((data) => {
+            return { ...data, backgroundColor };
+          });
         }}
       >
         <option value='black'>검정</option>
@@ -31,7 +47,14 @@ function Select(props) {
       글자색 :
       <select
         onChange={(e) => {
-          props.setColor(e.target.value);
+          // 1.
+          // props.setColor(e.target.value);
+
+          // 2.
+          const color = e.target.value;
+          setData((data) => {
+            return { ...data, color };
+          });
         }}
       >
         <option value='white'>하양</option>

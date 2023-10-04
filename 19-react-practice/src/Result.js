@@ -1,19 +1,24 @@
 function Result(props) {
-  const imgSrc = props.fruit + '.png';
+  const { fruit, backgroundColor, color, content } = props.data;
 
   return (
     <div style={{ display: 'block' }}>
-      <img src={imgSrc} width={100} height={100} />
+      <img
+        src={`${fruit}.png`}
+        alt='선택된 과일 이미지'
+        width={100}
+        height={100}
+      />
 
       <div
         style={{
           padding: '10px',
           marginTop: '10px',
-          backgroundColor: `${props.backgroundColor}`,
-          color: `${props.color}`,
+          backgroundColor: `${backgroundColor}`,
+          color: `${color}`,
         }}
       >
-        {props.content}
+        {content}
       </div>
     </div>
   );
