@@ -191,3 +191,13 @@ const result = numbers1.reduce((acc, cur) => {
   return acc + cur;
 }, initValue);
 console.log(result); // 115
+
+// 여러 배열을 합치는 방법
+// 1. concat()
+// : 배열을 합필 때 사용 가능한 메서드
+const arr5 = [1, 2, 3];
+const arr6 = [3, 4, 5];
+console.log(arr5.concat(arr6)); // [1, 2, 3, 3, 4, 5]
+
+// 2. ... spread
+console.log([...arr5, ...arr6]); // [1, 2, 3, 3, 4, 5]
