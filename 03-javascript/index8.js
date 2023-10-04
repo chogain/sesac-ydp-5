@@ -171,3 +171,23 @@ console.log(includeA); // ['cat', 'rabbit', 'apple'] 출력
 // includes를 실행한 결과를 새로운 배열로 만들었기 때문에 [false, true, true, true, false]와 같이 결과가 나옴
 const includeA2 = words.map((word) => word.includes('a'));
 console.log(includeA2); // [false, true, true, true, false]
+
+// reduce()
+// : 배열의 각 요소에 대해서 주어진 리듀서(reducer) 함수를 실행하고, "하나의 결과값" 반환
+
+// reduce((accumulator, currentValue) => { ... }, initialValue)
+// - accumulator: 누적되는 값
+// - currentValue: 현재 요소
+
+// const numbers1 = [1, 2, 3, 4, 5];
+// const result = numbers1.reduce((acc, cur) => {
+//   return acc + cur;
+// });
+// console.log(result); // 15
+
+const numbers1 = [1, 2, 3, 4, 5];
+const initValue = 100;
+const result = numbers1.reduce((acc, cur) => {
+  return acc + cur;
+}, initValue);
+console.log(result); // 115
