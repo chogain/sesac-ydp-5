@@ -288,3 +288,38 @@ console.log(circle1.getArea());
 const triangle1 = new Triangle(2, 3);
 console.log(triangle1);
 console.log(triangle1.getArea());
+
+///////////////////
+// 단축 평가
+// &&, ||
+
+// A && B : 두 개의 피연산자 모두 True일 떄만 True를 반환
+// A || B : 두 개의 피연산자 중에서 하나만 True여도 True를 반환
+
+console.log(true && true); // true
+console.log(false && true); // false
+
+console.log(true || false); // true
+console.log(false || true); // true
+
+const xx = 5;
+const yy = 7;
+
+// 삼항연산자 예시
+const result1 = xx > yy ? 'xx가 큼' : 'yy가 큼';
+console.log(result1); // b가 큼
+
+// 단축평가 (&&, 논리곱)
+const result2 = xx > yy && 'xx가 큼';
+console.log(result2); // false
+const result3 = xx < yy && 'yy가 큼';
+console.log(result2); // yy가 큼
+
+// 단축평가 (||, 논리합)
+const result4 = xx || 100;
+console.log(result4); // 5 (디폴트 값이 필요할 때 자주 사용)
+
+const nameEx = '홍길동';
+const nameEx2 = null;
+console.log(nameEx || '이름 없음'); // 홍길동
+console.log(nameEx2 || '이름 없음'); // 이름 없음
