@@ -1,71 +1,121 @@
 import React, { useState, useRef } from 'react';
 
 export default function Practice() {
+  const [inputs, setInputs] = useState({
+    author: '',
+    title: '',
+    search: '',
+  });
+  const { author, title, search } = inputs;
+  const [comment, setComment] = useState([]);
   const [result, setResult] = useState([]);
-  const [inputTitle, setInputTitle] = useState('');
-  const [inputAuthor, setInputAuthor] = useState('');
-  const [searchInput, setSearchInput] = useState('');
-  const inputAuthorRef = useRef();
-  const inputTitleRef = useRef();
+  const [searchType, setSearchType] = useState('author');
+  const authorRef = useRef();
+  const titleRef = useRef();
+  const searchRef = useRef();
 
-  const addResult = () => {
-    if (inputAuthor.trim().length === 0) {
-      inputAuthorRef.current.focus();
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
+  };
+
+  const addComment = () => {
+    if (author.trim().length === 0) {
+      authorRef.current.focus();
 
       return;
-    } else if (inputTitle.trim().length === 0) {
-      inputTitleRef.current.focus();
+    } else if (title.trim().length === 0) {
+      titleRef.current.focus();
 
       return;
     }
+    const newComment = {
+      author,
+      title,
+    };
 
-    const newResult = result.concat({
-      id: result.length + 1,
-      title: inputTitle,
-      author: inputAuthor,
+    setComment([...comment, newComment]);
+    setInputs({
+      ...inputs,
+      author: '',
+      title: '',
+    });
+  };
+
+  const searchComment = () => {
+    if (search.trim().length === 0) {
+      searchRef.current.focus();
+
+      return;
+    }
+    let searchResult = comment.filter((item) => {
+      if (!item[searchType].includes(search)) {
+        return null;
+      }
+
+      return item;
     });
 
-    setResult(newResult);
-    setInputAuthor('');
-    setInputTitle('');
+    setResult(searchResult);
+    setInputs({
+      ...inputs,
+      search: '',
+    });
+  };
+
+  const selectSearchType = (e) => {
+    setSearchType(e.target.value);
   };
 
   return (
     <div>
-      <fieldset>
-        <span>작성자 : </span>
+      <form>
+        <label htmlFor='wirter2'>작성자:</label>
         <input
+          id='wirter2'
           type='text'
-          placeholder='작성자'
-          value={inputAuthor}
-          ref={inputAuthorRef}
-          onChange={(e) => setInputAuthor(e.target.value)}
+          name='author'
+          value={author}
+          ref={authorRef}
+          onChange={onChange}
         />
-        <span>제목 : </span>
+        <label htmlFor='title2'>제목:</label>
         <input
+          id='title2'
           type='text'
-          placeholder='제목'
-          value={inputTitle}
-          ref={inputTitleRef}
-          onChange={(e) => setInputTitle(e.target.value)}
+          name='title'
+          value={title}
+          ref={titleRef}
+          onChange={onChange}
         />
-        <button onClick={addResult}>작성</button>
-      </fieldset>
+        <button type='button' onClick={addComment}>
+          작성
+        </button>
+      </form>
 
       <form>
-        <select>
+        <select name='type' onChange={selectSearchType}>
           <option value='author'>작성자</option>
           <option value='title'>제목</option>
         </select>
+
         <input
           type='text'
+          name='search'
           placeholder='검색어'
-          value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value)}
+          value={search}
+          onChange={onChange}
+          ref={searchRef}
         />
-        <button>검색</button>
+        <button type='button' onClick={searchComment}>
+          검색
+        </button>
       </form>
 
+      <h3>전체 댓글 목록</h3>
       <table>
         <thead>
           <tr>
@@ -75,17 +125,45 @@ export default function Practice() {
           </tr>
         </thead>
         <tbody>
-          {result.map((data) => {
+          {comment.map((value, idx) => {
             return (
-              <tr key={data.id}>
-                <td>{data.id}</td>
-                <td>{data.title}</td>
-                <td>{data.author}</td>
+              <tr key={idx + 1}>
+                <td>{idx + 1}</td>
+                <td>{value.title}</td>
+                <td>{value.author}</td>
               </tr>
             );
           })}
         </tbody>
       </table>
+
+      <h3>댓글 검색 결과</h3>
+      {result.length > 0 ? (
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+              </tr>
+            </thead>
+            <tbody>
+              {result.map((value, idx) => {
+                return (
+                  <tr key={idx + 1}>
+                    <td>{idx + 1}</td>
+                    <td>{value.title}</td>
+                    <td>{value.author}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <h5>검색 결과가 없습니다.</h5>
+      )}
     </div>
   );
 }
