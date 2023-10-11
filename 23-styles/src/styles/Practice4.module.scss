@@ -1,0 +1,19 @@
+@import './utils';
+@import '~include-media/dist/include-media';
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(5, 150px);
+
+  @include media('<768px') {
+    grid-template-columns: repeat(3, 150px);
+  }
+
+  @include media('<532px') {
+    grid-template-columns: repeat(1, 150px);
+  }
+}
+
+.item {
+  @include box(150px);
+}

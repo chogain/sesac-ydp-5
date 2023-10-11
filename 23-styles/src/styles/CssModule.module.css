@@ -1,0 +1,38 @@
+/* CSS Module styling */
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+}
+
+.red {
+  background-color: red;
+}
+
+.orange {
+  background-color: orange;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.green {
+  background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.navy {
+  background-color: navy;
+}
+
+.purple {
+  background-color: purple;
+}

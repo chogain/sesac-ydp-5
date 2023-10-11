@@ -1,0 +1,65 @@
+.container {
+  height: 230px;
+}
+
+.section {
+  position: relative;
+}
+
+.section div {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  position: absolute;
+
+  &:first-child {
+    background-color: rgb(80, 179, 255);
+  }
+
+  &:nth-child(3) {
+    background-color: rgb(109, 147, 236);
+    top: 50px;
+    left: 70px;
+  }
+
+  &:nth-child(4) {
+    background-color: rgb(0, 0, 169);
+    top: 90px;
+    left: 100px;
+  }
+
+  &:nth-child(5) {
+    background-color: rgb(153, 163, 255);
+    top: 90px;
+    left: 150px;
+  }
+
+  &:nth-child(6) {
+    background-color: rgb(0, 124, 135);
+    top: 90px;
+    left: 210px;
+    z-index: 1;
+  }
+}
+
+.section > .eyes {
+  background-color: white;
+  top: 20px;
+  left: 20px;
+  width: 40px;
+  height: 40px;
+
+  & > div {
+    background-color: black;
+    width: 20px;
+    height: 20px;
+    top: 10px;
+  }
+}
+
+.img {
+  width: 250px;
+  position: relative;
+  top: 140px;
+  left: 100px;
+}

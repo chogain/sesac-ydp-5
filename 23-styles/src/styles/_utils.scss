@@ -1,0 +1,30 @@
+@mixin box($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin move($move) {
+  @keyframes move {
+    0% {
+      transform: translate(0px);
+    }
+    25% {
+      transform: translate($move, 0px);
+    }
+    50% {
+      transform: translate($move);
+    }
+    75% {
+      transform: translate(0px, $move);
+    }
+    100% {
+      transform: translate(0px);
+    }
+  }
+}
+
+@mixin move-animation($animation-name) {
+  animation-name: $animation-name;
+  animation-duration: 2s;
+  animation-iteration-count: 2;
+}
